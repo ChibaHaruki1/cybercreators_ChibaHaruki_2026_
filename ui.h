@@ -25,7 +25,7 @@ public:
 	void Update()override;					//更新処理
 	void Draw()override;					//描画処理
 
-	static CUI* Create(CObject3D::TYPE_UI typeui); //生成処理
+	static CUI* Create(CObject3D::TYPE typeui); //生成処理
 };
 
 
@@ -70,12 +70,14 @@ public:
 
 private:
 	//マクロ定義
-	constexpr static float SIZEX = 80.0f;                //X軸の大きさ
-	constexpr static float SIZEY = 20.0f;                //Y軸の大きさ
-	constexpr static float SIZEZ = 20.0f;                //Z軸の大きさ
-	constexpr static float ADDJUST_POSY = 20.0f;         //Y軸の位置の調整値
-	constexpr static float ADDJUST_POSZ = 35.0f;         //Z軸の位置の調整値
-	constexpr static float ADDJUST_ROTY = 0.54f;         //Y軸の向きの調整値
-	constexpr static float ADDJUST_ROTZ = 1.54f;         //Z軸の向きの調整値
-	constexpr static float ADDJUST_CREATE_POSZ = 100.0f; //Z軸の生成位置の調整値
+	constexpr static float SIZEX = 80.0f;                 //X軸の大きさ
+	constexpr static float SIZEY = 20.0f;                 //Y軸の大きさ
+	constexpr static float SIZEZ = 20.0f;                 //Z軸の大きさ
+	constexpr static float ADDJUST_POSY = 20.0f;          //Y軸の位置の調整値
+	constexpr static float ADDJUST_POSZ = 35.0f;          //Z軸の位置の調整値
+	constexpr static float ADDJUST_ROTY = 0.54f;          //Y軸の向きの調整値
+	constexpr static float ADDJUST_ROTZ = 1.54f;          //Z軸の向きの調整値
+	constexpr static float ADDJUST_CREATE_POSX = 300.0f;  //X軸の生成位置の調整値
+	constexpr static float ADDJUST_CREATE_POSY = 500.0f;  //Y軸の生成位置の調整値
+	constexpr static float ADDJUST_ADDJUST_SIZE = 1.3f;   //プレイヤーとの当たり判定時の乗算値
 };

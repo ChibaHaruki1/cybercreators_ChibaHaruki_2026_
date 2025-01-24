@@ -39,7 +39,7 @@ public:
 	void DesignationUninitX(CObjectX::TYPE type,int nNumber);           //３Dモデルでnullptrにしたい物をnullptrにする処理
 	void DesignationUninitXEnemy(CObjectX::TYPE type, int nNumber);     //敵でnullptrにしたい物をnullptrにする処理
 	void DesignationUninit2D(CObject2D::TYPE type);                     //2Dでnullptrにしたい物をnullptrにする処理
-	void DesignationUninit3D(CObject3D::TYPE type);                     //3Dでnullptrにしたい物をnullptrにする処理
+	void DesignationUninit3D(CObject3D::TYPE type,int nNumber);         //3Dでnullptrにしたい物をnullptrにする処理
 
 	CObject2D* GetCreateObjectInstnace2D(CObject2D::TYPE type, int nNumber);               //２Dオブジェクト生成
 	CObject3D* GetCreateObjectInstnace(CObject3D::TYPE type,int nNumber,D3DXVECTOR3 pos);  //３Dオブジェクト生成
@@ -99,6 +99,7 @@ public:
 
 	//３Dの取得
 	CFuelGage* GetFuelGage() {return m_pFuelGage; }                   //燃料ゲージの取得
+	CUI* GetLaser(int nNumber) { return m_pLaser[nNumber]; }          //レーザーの取得
 																	  
 	//作った数を取得する用の関数									     
 	int& GetFieldBlockCount() {return  m_nNumFiledBlock; }            //床用のブロックの作った数
@@ -110,10 +111,11 @@ public:
 	int& GetSmallBlock001Count() {return  m_nSmallBlock001; }         //小さいブロックの作った数
 	int& GetUpWallBlockCount() {return  m_nUpWallBlock; }             //上がる用のブロックの作った数
 	int& GetWoodenBoardCount() { return m_nWoodenBoard; }             //木の板群の作った数
-	int& GetEnemy001Count() { return m_nEnemy001; }                   //敵の作った数
-	int& GetEnemy002Count() { return m_nEnemy001; }                   //敵の作った数
+	int& GetEnemy001Count() { return m_nEnemy001; }                   //敵001の作った数
+	int& GetEnemy002Count() { return m_nEnemy002; }                   //敵002の作った数
 	int& GetMotionInEnemyCount() { return m_nEnemyInMotion; }         //モーション付きの敵の生成数
 	int& GetMotionInEnemy001Count() { return m_nEnemyInMotion001; }   //モーション付きの敵001の生成数
+	int& GetLaserCount() { return m_nLaser; }                         //レーザーの数
 
 	//マクロ定義 （constexprでコンパイル時に初期化）
 	constexpr static int MAX_ENEMYINMOTION = 10;  //モーション付きの敵の最大数
@@ -188,7 +190,8 @@ private:
 	CManagerScore* m_pGameScore;
 
 	//３Dのインスタンス
-	CFuelGage* m_pFuelGage;
+	CFuelGage* m_pFuelGage;          //燃料ゲージ
+	CUI* m_pLaser[MAX_STAGEOBJECT];  //カメラから出るレーザー
 
 	//作られた数を保管する変数
 	int m_nNumFiledBlock;      //地面用のブロックの数
@@ -206,6 +209,7 @@ private:
 	int m_nWoodenBoard;        //木の板群の数
 	int m_nBreakHouse;         //壊れた家の数
 	int m_nShip;               //スペースシップの数
+	int m_nLaser;              //レーザーの作られた数
 };
 
 #endif

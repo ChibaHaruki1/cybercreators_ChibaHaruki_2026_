@@ -68,6 +68,7 @@ private: //アクセス不可能
 
 	constexpr static float  ADDJUST_HIT_MOTIONENENY001 = 0.5f; //モーション付きの敵001の当たり判定の調整値
 	constexpr static float  MINUS_BOSS_HPGAGE = 0.01f;         //ボスのHPゲージを減らす値
+	constexpr static float  ADDJUST_ADDJUST_SIZE = 1.3f;       //ボスのHPゲージを減らす値
 };
 
 

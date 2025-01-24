@@ -37,6 +37,7 @@ CInstance::CInstance()
 		m_pTelephonPole[nCount1] = nullptr;            //電柱のポインターの初期化
 		m_pSurveillanceCameraUp[nCount1] = nullptr;    //監視カメラの上の部分のポインターの初期化
 		m_pSurveillanceCameraDown[nCount1] = nullptr;  //監視カメラの下の部分のポインターの初期化
+		m_pLaser[nCount1] = nullptr;                   //レーザーのポインターの初期化
 	}
 
 	//がれきの最大数分回す
@@ -111,6 +112,7 @@ CInstance::CInstance()
 	m_nWoodenBoard = -1;             //木の板群の数を初期化
 	m_nBreakHouse = -1;              //壊れた家の数を初期化
 	m_nShip = -1;                    //スペースシップの数を初期化
+	m_nLaser = -1;                   //レーザーの数を初期化
 }
 
 
@@ -158,6 +160,7 @@ void CInstance::Uninit()
 		m_pTelephonPole[nCount1] = nullptr;            //電柱のポインターの初期化
 		m_pSurveillanceCameraUp[nCount1] = nullptr;    //監視カメラの上の部分のポインターの初期化
 		m_pSurveillanceCameraDown[nCount1] = nullptr;  //監視カメラの下の部分のポインターの初期化
+		m_pLaser[nCount1] = nullptr;                   //レーザーのポインターの初期化
 	}
 
 	//がれきの最大数分回す
@@ -310,12 +313,18 @@ void CInstance::DesignationUninit2D(CObject2D::TYPE type)
 //============================================================================================================================
 //３Dのnullptrにしたいものを指定する処理
 //============================================================================================================================
-void CInstance::DesignationUninit3D(CObject3D::TYPE type)
+void CInstance::DesignationUninit3D(CObject3D::TYPE type, int nNumber)
 {
 	//タイプが衝撃波の時
 	if (type == CObject3D::TYPE::IMPACT)
 	{
 		m_pImpact = nullptr; //情報をなくす
+	}
+
+	//タイプがレーザーの時
+	else if (type == CObject3D::TYPE::LASER)
+	{
+		m_pLaser[nNumber] = nullptr;
 	}
 }
 
@@ -429,6 +438,13 @@ CObject3D* CInstance::GetCreateObjectInstnace(CObject3D::TYPE type, int nNumber,
 	else if (type==CObject3D::TYPE::FUELGAGE)
 	{
 		return 	m_pFuelGage = CFuelGage::Create();  //燃料ゲージの生成
+	}
+
+	//タイプがレーザーの時
+	else if (type == CObject3D::TYPE::LASER)
+	{
+		m_nLaser++;
+		return m_pLaser[m_nLaser] = CUI::Create(type);
 	}
 
 	return nullptr; //無を返す

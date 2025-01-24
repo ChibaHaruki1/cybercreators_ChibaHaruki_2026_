@@ -475,7 +475,7 @@ void CObjectX::ObjectArrangement(CObjectX::TYPE type, CUI* pUI1)
 		//UIの情報がない時
 		if (pUI == nullptr)
 		{
-			pUI = CCreateInObject::Create(CObject3D::TYPE_UI::CLING); //生成
+			pUI = CCreateInObject::Create(CObject3D::TYPE::CLING); //生成
 			pUI->SetSize(50.0f, 0.0f, 50.0f);                         //大きさの設定
 		}
 
@@ -493,7 +493,7 @@ void CObjectX::ObjectArrangement(CObjectX::TYPE type, CUI* pUI1)
 			CManager::GetInstance()->GetCreateObjectInstanceX(CObjectX::TYPE::SURVEILLANCECAMERADOWN, CManager::GetScene()->GetPlayerX()->GetTelephonPoleCount(), D3DXVECTOR3(m_pos.x + 20.0f, m_pos.y + 170.0f, m_pos.z - 50.0f));
 
 			//レーザーUIの生成と位置を同期させる
-			pUI1 = CLaserCamare::Create(CObject3D::TYPE_UI::LASER);
+			pUI1 = CLaserCamare::Create(CObject3D::TYPE::LASER);
 
 			//生成したオブジェクトの位置に同期
 			pUI->GetPos() = CManager::GetInstance()->GetTelephonPole(CManager::GetScene()->GetPlayerX()->GetTelephonPoleCount())->GetPos();

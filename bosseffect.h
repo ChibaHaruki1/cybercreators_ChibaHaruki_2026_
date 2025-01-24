@@ -127,6 +127,9 @@ public:
 	//マクロ定義
 	constexpr static int MAX_IMPACT_LIFE = 100; //ライフの最大値
 
+	constexpr static float ADDJUST_SIZE_X = 1.5f; //X軸のサイズの乗算値
+	constexpr static float ADDJUST_SIZE_Y = 1.1f; //Y軸のサイズの乗算値
+
 private:
 	//マクロ定義
 	constexpr static int RED = 255;             //赤色

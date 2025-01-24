@@ -263,7 +263,7 @@ void CPlayerX::Update()
 			return;       //処理を抜ける
 		}
 	}
-	//SceneMode(2);         //シーンを選択
+	SceneMode(2);         //シーンを選択
 }
 
 
@@ -1257,8 +1257,12 @@ void CPlayerX::BlockJudgement()
 			if (GetCollision()->ColiisionBoxOutside(GetPos(), CManager::GetInstance()->GetFinalCeiling()->GetPos(), GetModelSize(), CManager::GetInstance()->GetFinalCeiling()->GetModelSize() * 3.0f, GetMove()) == true)
 			{
 				SetGravityFlag(true);//重力ON
+				//CManager::GetScene()->GetCamera()->GetAdjustmentPosY() = 0.0f;
 			}
-			CManager::GetScene()->GetCamera()->GetAdjustmentPosY() = 0.0f;
+			//else
+			//{
+			//	CManager::GetScene()->GetCamera()->GetAdjustmentPosY() = CEvent::CANERA_POSY;    //カメラのＹ軸の値を設定
+			//}
 		}
 		//else
 		//{
@@ -1292,7 +1296,7 @@ void CPlayerX::BlockJudgement()
 			//話すtextの情報がない時
 			if (m_pTalkText == nullptr)
 			{
-				m_pTalkText = CUI::Create(CObject3D::TYPE_UI::TALKTEXTR); //生成
+				m_pTalkText = CUI::Create(CObject3D::TYPE::TALKTEXTR); //生成
 
 				//位置の設定
 				m_pTalkText->GetPos() = D3DXVECTOR3(CManager::GetInstance()->GetShop()->GetPos().x, CManager::GetInstance()->GetShop()->GetPos().y + 150.0f, CManager::GetInstance()->GetShop()->GetPos().z); //位置の初期化

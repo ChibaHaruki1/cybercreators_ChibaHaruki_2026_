@@ -269,18 +269,23 @@ void CBullet3D::CollisionOnObject()
 	}
 
 	//カメラの上部分の情報がある時
-	if (CManager::GetInstance()->GetSurveillanceCameraUp(CManager::GetScene()->GetPlayerX()->GetTelephonPoleCount()) != nullptr)
+	for (int nCamera = 0; nCamera < CManager::GetScene()->GetPlayerX()->GetTelephonPoleCount(); nCamera++)
 	{
-		//カメラとの当たり判定
-		if (CManager::GetScene()->GetPlayerX()->GetCollision()->ColiisionBox3D(GetPos(), CManager::GetInstance()->GetSurveillanceCameraUp(CManager::GetScene()->GetPlayerX()->GetTelephonPoleCount())->GetPos(),
-			GetSizeX(), MAX_BULLET3D_SIZE_Y, MAX_BULLET3D_SIZE_Z,
-			CManager::GetInstance()->GetSurveillanceCameraUp(0)->GetModelSize()))
+		if (CManager::GetInstance()->GetSurveillanceCameraUp(nCamera) != nullptr)
 		{
-			CManager::GetInstance()->GetSurveillanceCameraUp(CManager::GetScene()->GetPlayerX()->GetTelephonPoleCount())->Release(); //カメラの上部分の削除
-			CManager::GetInstance()->DesignationUninitX(CObjectX::TYPE::SURVEILLANCECAMERAUP, 0);                                    //ポインターをnullptrにする
+			//カメラとの当たり判定
+			if (CManager::GetScene()->GetPlayerX()->GetCollision()->ColiisionBox3D(GetPos(), CManager::GetInstance()->GetSurveillanceCameraUp(nCamera)->GetPos(),
+				MAX_BULLET3D_SIZE_X * 1.5f, MAX_BULLET3D_SIZE_Y * 1.5f, MAX_BULLET3D_SIZE_Z * 1.5f,
+				CManager::GetInstance()->GetSurveillanceCameraUp(nCamera)->GetModelSize()))
+			{
+				CManager::GetInstance()->GetSurveillanceCameraUp(nCamera)->Release();                        //カメラの上部分の削除
+				CManager::GetInstance()->GetLaser(nCamera)->Release();                                       //レーザーの削除
+				CManager::GetInstance()->DesignationUninitX(CObjectX::TYPE::SURVEILLANCECAMERAUP, nCamera);  //カメラポインターをnullptrにする
+				CManager::GetInstance()->DesignationUninit3D(CObject3D::TYPE::LASER, nCamera);               //レーザーポインターをnullptrにする
 
-			SetLife(0); //ライフを０にする
-			return;     //処理を抜ける
+				SetLife(0); //ライフを０にする
+				return;     //処理を抜ける
+			}
 		}
 	}
 

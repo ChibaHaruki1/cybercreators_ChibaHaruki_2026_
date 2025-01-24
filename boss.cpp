@@ -96,6 +96,7 @@ void CBoss::Update()
 	//ボスが死んだ時
 	else if (CManager::GetInstance()->GetBossHPGage()->GetSaveSizeX() <= 0)
 	{
+		CManager::GetInstance()->GetBossSpecialAttack()->SetAlpha(0);               //必殺技のアルファ値を初期化
 		SetAddjustDieFrame()++;                                                     //死亡カウントを増やす
 		SetMotionBoss(CCharacter::BOSSMOTIONSTATE::BOSSDIE);                        //モーションの種類を設定
 		CManager::GetInstance()->DesignationUninitXEnemy(CObjectX::TYPE::BOSS, 0);  //ボスの（自身）インスタンスの情報を無くす

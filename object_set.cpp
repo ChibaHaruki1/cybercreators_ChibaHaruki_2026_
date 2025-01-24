@@ -210,7 +210,7 @@ void CObjectSet::LoodTelephonPole(FILE* pFile)
 				CManager::GetInstance()->GetCreateObjectInstanceX(CObjectX::TYPE::TELEPHONPOLE, CManager::GetScene()->GetPlayerX()->GetTelephonPoleCount(), D3DXVECTOR3(PosX, PosY, PosZ));                                    //電柱の生成
 				CManager::GetInstance()->GetCreateObjectInstanceX(CObjectX::TYPE::SURVEILLANCECAMERAUP, CManager::GetScene()->GetPlayerX()->GetTelephonPoleCount(), D3DXVECTOR3(PosX + 20.0f, PosY + 180.0f, PosZ - 50.0f));   //監視カメラの上の部分の生成
 				CManager::GetInstance()->GetCreateObjectInstanceX(CObjectX::TYPE::SURVEILLANCECAMERADOWN, CManager::GetScene()->GetPlayerX()->GetTelephonPoleCount(), D3DXVECTOR3(PosX + 20.0f, PosY + 170.0f, PosZ - 50.0f)); //監視カメラの下の部分の生成
-				CLaserCamare::Create(CObject3D::TYPE_UI::LASER); //レーザーの生成
+				CManager::GetInstance()->GetCreateObjectInstnace(CObject3D::TYPE::LASER, 0, D3DXVECTOR3(PosX, PosY, PosZ)); //レーザーの生成
 			}
 		}
 	}

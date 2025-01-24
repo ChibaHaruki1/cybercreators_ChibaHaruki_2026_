@@ -63,27 +63,27 @@ void CCamera::Uninit()
 //========================
 void CCamera::Update()
 {
-	//Yキーが押された時
-	if (CManager::GetKeyBorad()->GetKeyboardPress(DIK_Y) == true)
-	{//視点が下（小さく）になる
-		m_posV.y += MAX_CAMERASPEED;           //注視点のY軸を増加させる
-		m_fAdjustmentPosY += MAX_CAMERASPEED;  //Y軸の調整分の値を増やす（高くなる）
-	}
+	////Yキーが押された時
+	//if (CManager::GetKeyBorad()->GetKeyboardPress(DIK_Y) == true)
+	//{//視点が下（小さく）になる
+	//	m_posV.y += MAX_CAMERASPEED;           //注視点のY軸を増加させる
+	//	m_fAdjustmentPosY += MAX_CAMERASPEED;  //Y軸の調整分の値を増やす（高くなる）
+	//}
 
-	//Nキーが押された時
-	else if (CManager::GetKeyBorad()->GetKeyboardPress(DIK_N) == true)
-	{//視点が上（大きく）なる
-		m_posV.y -= MAX_CAMERASPEED;           //注視点のY軸を減少させる
-		m_fAdjustmentPosY -= MAX_CAMERASPEED;  //Y軸の調整分の値を減少（低くなる）
-	}
+	////Nキーが押された時
+	//else if (CManager::GetKeyBorad()->GetKeyboardPress(DIK_N) == true)
+	//{//視点が上（大きく）なる
+	//	m_posV.y -= MAX_CAMERASPEED;           //注視点のY軸を減少させる
+	//	m_fAdjustmentPosY -= MAX_CAMERASPEED;  //Y軸の調整分の値を減少（低くなる）
+	//}
 
-	//Zキーが押された
-	else if (CManager::GetKeyBorad()->GetKeyboardPress(DIK_Z) == true)
-	{//視点が左に動く
-		m_rot.y += MAX_ROTSPEED;
-		m_posV.x = m_posR.x + sinf(D3DX_PI + m_rot.y); //視点を注視点と向きと同期させる
-		m_posV.z = m_posR.z + cosf(D3DX_PI + m_rot.y); //視点を注視点と向きと同期させる
-	}
+	////Zキーが押された
+	//else if (CManager::GetKeyBorad()->GetKeyboardPress(DIK_Z) == true)
+	//{//視点が左に動く
+	//	m_rot.y += MAX_ROTSPEED;
+	//	m_posV.x = m_posR.x + sinf(D3DX_PI + m_rot.y); //視点を注視点と向きと同期させる
+	//	m_posV.z = m_posR.z + cosf(D3DX_PI + m_rot.y); //視点を注視点と向きと同期させる
+	//}
 
 	////Cキーが押された時
 	//else if (CManager::GetKeyBorad()->GetKeyboardPress(DIK_C) == true)
