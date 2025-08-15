@@ -55,7 +55,7 @@ CBlockXStrategy::~CBlockXStrategy()
 //============================
 CBlock000::CBlock000()
 {
-	SetBlockFileNamePass("data\\XFILE\\BLOCK\\Block002.x"); //ファイルパス設定
+	SetBlockFileNamePass("data\\XFILE\\BLOCK\\no.x"); //ファイルパス設定
 }
 
 //============================
